@@ -6,15 +6,22 @@
 -   Recheck authentication: ssh -T git@github.com
 -   Hi <user>! You've successfully authenticated, but GitHub does not provide shell access.
 
++ Config
+- git config --global user.email <you@example.com>
+- git config --global user.name <Your Name>
+
 + Create Repository
 -   git init
 -   git add README.md
 -   git commit -m "first commit"
 -   git branch -M main
--   git remote add origin git@github.com:Glyphix888/Data-Mechanica-Solutio-.git
+-   git remote add origin git@github.com:Glyphix888/<repo-name>.git
 -   git push -u origin main
 
 + Git commands
--   git clone <repo>
+-   git remote -v -> View your remote
+-   git clone <repo> -> Clone an existing repository
+-   git add <filename> | . -> Add files for commit
+-   git commit -m <message> -> Commit files to working branch
 
 
