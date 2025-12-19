@@ -1,0 +1,20 @@
++ Authentication for git
+-   Check authentication: ssh -T git@github.com 
+-   Create a key for ssh access: ssh-keygen -t ed25519 -C <your_email@example.com>
+-   Log the output to your console and copy: cat ~/.ssh/id_ed25519.pub | cat filepath if not the one listed
+-   GitHub → Settings → SSH and GPG keys → New SSH key
+-   Recheck authentication: ssh -T git@github.com
+-   Hi <user>! You've successfully authenticated, but GitHub does not provide shell access.
+
++ Create Repository
+-   git init
+-   git add README.md
+-   git commit -m "first commit"
+-   git branch -M main
+-   git remote add origin git@github.com:Glyphix888/Data-Mechanica-Solutio-.git
+-   git push -u origin main
+
++ Git commands
+-   git clone <repo>
+
+
