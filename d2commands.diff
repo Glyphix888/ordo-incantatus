@@ -1,0 +1,14 @@
++ D2 Setup(Windows)
+-   Download appropriate windows binary from https://github.com/terrastruct/d2/releases ex: d2-v0.7.1-windows-amd64.msi
+-   Run the the binary
+-   Add D2 to your path:
+        ~ Window Start search environment variables
+        ~ New variable
+        ~ Name your variable and add the file path to the d2 executable ex: C:\Program Files\d2
+        ~ Restart terminal
+-   Test D2 was installed successfully:
+        ~ In a terminal(Command prompt or powershell)
+        ~ d2 --version
+        ~ echo 'x -> y -> z' > in.d2
+        ~ d2 -w input.d2 out.svg
+-   Take the tour at https://d2lang.com/ to get familiar with the tool
