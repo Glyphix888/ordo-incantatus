@@ -1,0 +1,37 @@
+
+x {
+    shape:cloud
+}
+arrow connections {
+    first { shape: document }
+    second { shape: stored_data }
+
+    first -- second
+    first -> second
+    first <- second
+    first <-> second
+}
+
+
+container { 
+    shape: page 
+    y { 
+        shape: square
+        style.3d: true 
+    } 
+}
+
+Nested map: {
+  Box-0: {
+    one -> two
+    two -> three
+  }
+  Box-1: {
+    one -> two
+  }
+
+  Box-1 -> Box-0
+}
+
+Nested map.Box-1.two <-- container.y: y wants box
+x -> container.y: Hello Y from X
