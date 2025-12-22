@@ -19,9 +19,11 @@
 -   git push -u origin main
 
 + Git commands
--   git remote -v -> View your remote
--   git clone <repo> -> Clone an existing repository
--   git add <filename> | . -> Add files for commit
--   git commit -m <message> -> Commit files to working branch
+-   git remote -v 
+-   git clone <repo>
+-   git status
+-   git add <filename> | .
+-   git commit -m <message>
+-   git push
 
 

@@ -1,4 +1,4 @@
-+ D2 Setup(Windows)
+!------------------------- D2 Setup(Windows) -------------------------! 
 -   Download appropriate windows binary from https://github.com/terrastruct/d2/releases ex: d2-v0.7.1-windows-amd64.msi
 -   Run the the binary
 -   Add D2 to your path:
@@ -12,3 +12,52 @@
         ~ echo 'x -> y -> z' > in.d2
         ~ d2 -w input.d2 out.svg
 -   Take the tour at https://d2lang.com/ to get familiar with the tool
+    
+!------------------------- D2 commands -------------------------!
++ Basic command to output svg
+-   d2 --theme=6 --dark-theme=7 -l elk --pad 10 ./helloworld.d2
+        {
+            --theme: set a light theme
+            --dark-theme: set a dark theme
+            -l: set a layout {
+                dagre(default): Fast, general-purpose hierarchical layout that works well out of the box, but can produce suboptimal edge crossings on large or dense graphs.
+                elk: High-quality, enterprise-grade hierarchical layout with excellent spacing and crossing minimization, but slower and heavier than other options.
+                tala(requires download):Deterministic grid-based layout that gives precise structural control, but provides no automatic graph optimization or intelligence.
+            }
+            --pad: set your padding
+        }
+
++ Shapes
+-   rectangle, square, page, parallelogram, document, cylinder, queue, package, step, callout 
+-   stored_data, rectangle, square, page, parallelogram, document, cylinder, queue, package, step
+-   callout, stored_data, person, diamond, oval, circle, hexagon, cloud, c4-person
+
++ Declaring Shapes
+-   define a variable x with shape cloud
+    x {shape: cloud} 
+-   define a variable container shape page with another parallelogram y inside, separate blocks with ; or indentation  
+    container { 
+        shape: page 
+        y { shape:parallelogram } 
+    } or
+    container: {shape : page; y: {shape : parallelogram}}
+
++ Connections 
+-   first -- second: No arrow just line connection 
+-   first -> second: Arrow from first to second shape: 
+-   first <- second:  Arrow from second to first shape: 
+-   first <-> second: Two way arrow 
+
++ Containers
+-   Nested Maps
+Nested map: {
+  Box-0: {
+    one -> two
+    two -> three
+  }
+  Box-1: {
+    one -> two
+  }
+
+  Box-1 -> Box-0
+}
