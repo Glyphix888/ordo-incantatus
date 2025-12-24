@@ -1,0 +1,84 @@
+direction: down
+
+LeadGeneration: {
+  label: "Lead Generation Component"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F112-server.svg
+}
+
+LeadStorage: {
+  label: "Lead Storage Component"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+}
+
+Website: {
+  label: "Website Component"
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FStorage%2FAmazon-Simple-Storage-Service-S3_Bucket_light-bg.svg
+  
+}
+
+LeadComms: {
+  label: "Lead Communications Component(Email & outreach campaigns)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F257-file.svg
+}
+
+DemoScheduler: {
+  label: "Demo Scheduler Component(Book demos automatically)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F273-calendar.svg
+}
+
+Demo: {
+  label: "Demo Component(ROI-driven product demonstration)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F005-programmer.svg
+}
+
+OnboardingScheduler: {
+  label: "Onboarding Scheduler & Follow-Up(Move prospects into onboarding)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F273-calendar.svg
+}
+
+Onboarding: {
+  label: "Onboarding Process Component(Contracts, payment, integrations)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F365-user.svg
+}
+
+ClientAnalytics: {
+  label: "Client Analytics Component"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F001-analytics.svg
+}
+
+ClientUpkeep: {
+  label: "Client Upkeep Component(Retention, upsells, referrals)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F359-users.svg
+}
+
+# --- Primary workflow ---
+
+LeadGeneration -> LeadStorage : "Capture leads"
+Website -> LeadStorage : "Inbound forms"
+
+LeadStorage -> LeadComms : "Qualified leads"
+LeadComms -> DemoScheduler : "CTA: Book demo"
+
+DemoScheduler -> Demo : "Scheduled session"
+Demo -> OnboardingScheduler : "Client interest / yes"
+
+OnboardingScheduler -> Onboarding : "Start onboarding"
+Onboarding -> ClientAnalytics : "Activate service"
+
+ClientAnalytics -> ClientUpkeep : "Usage & performance data"
+ClientUpkeep -> LeadComms : "Upsells / expansions"
+
+# --- Feedback loops ---
+
+ClientAnalytics -> LeadStorage : "Conversion data"
+LeadStorage -> LeadGeneration : "Refined targeting"
