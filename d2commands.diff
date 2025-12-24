@@ -15,7 +15,7 @@
     
 !------------------------- D2 commands -------------------------!
 + Basic command to output svg
--   d2 --theme=6 --dark-theme=7 -l elk --pad 10 ./helloworld.d2
+-   d2 --theme=105 --dark-theme=200 -l elk --pad 10 ./lead-generation-component.d2
         {
             --theme: set a light theme
             --dark-theme: set a dark theme
