@@ -1,0 +1,118 @@
+direction: down
+
+LeadGeneration: {
+  label: "LeadGeneration\n(Lightweight Worker)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F112-server.svg
+}
+
+Scheduler: {
+  label: "Scheduler\n(cron / node-cron)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F273-calendar.svg
+}
+
+NodeWorker: {
+  label: "Node.js Worker"
+  shape: image
+  icon: https://icons.terrastruct.com/dev%2Fnodejs.svg
+}
+
+Sources: {
+  label: "Source Collectors"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F140-internet.svg
+}
+
+GoogleMaps: {
+  label: "Google Maps\n(Playwright)"
+  shape: image
+  icon: https://cdn-icons-png.flaticon.com/128/15465/15465700.png
+}
+
+MetaAds: {
+  label: "Meta Ad Library\n(API / Scrape)"
+  shape: image
+  icon: https://icons.terrastruct.com/social%2F045-facebook.svg
+}
+
+Sunbiz: {
+  label: "Sunbiz\n(FL Business Registry)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F257-file.svg
+}
+
+MiamiDadeClerk: {
+  label: "Miami-Dade Clerk of Courts\n(Case Records)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F257-file.svg
+}
+
+Inbound: {
+  label: "Inbound Website Forms"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F359-users.svg
+}
+
+Normalizer: {
+  label: "Normalization Layer\n(JS Objects)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F220-layers.svg
+}
+
+Dedupe: {
+  label: "Deduplication\n(Hash Fingerprint)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F089-data%20analysis.svg
+}
+
+Enrichment: {
+  label: "Enrichment\n(Website / Email / Tech)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F092-network.svg
+}
+
+Scoring: {
+  label: "Scoring Engine\n(Code-Based)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F133-star.svg
+}
+
+SQLite: {
+  label: "SQLite\n(Fingerprints + History)"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+}
+
+LeadStorage: {
+  label: "LeadStorage Service"
+  shape: image
+  icon: https://icons.terrastruct.com/essentials%2F117-database.svg
+}
+
+# ---- Execution Flow ----
+
+Scheduler -> NodeWorker : "Trigger jobs"
+
+NodeWorker -> Sources : "Run collectors"
+
+Sources -> GoogleMaps
+Sources -> MetaAds
+Sources -> Sunbiz
+Sources -> MiamiDadeClerk
+Sources -> Inbound
+
+GoogleMaps -> Normalizer
+MetaAds -> Normalizer
+Sunbiz -> Normalizer
+MiamiDadeClerk -> Normalizer
+Inbound -> Normalizer
+
+Normalizer -> Dedupe
+Dedupe -> SQLite : "Check / store fingerprint"
+
+Dedupe -> Enrichment : "If unseen"
+Enrichment -> Scoring
+
+Scoring -> SQLite : "Persist score / seen"
+Scoring -> LeadStorage : "Qualified leads only"
